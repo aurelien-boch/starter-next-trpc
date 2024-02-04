@@ -1,11 +1,10 @@
 on:
-  push:
+  pull_request:
     paths:
       - "frontend/**"
+  push:
     branches:
       - master
-    tags:
-      - "v*.*.*"
 jobs:
   test-unit:
     runs-on: ubuntu-latest

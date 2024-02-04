@@ -1,11 +1,10 @@
 on:
-  push:
+  pull_request:
     paths:
       - "frontend/**"
+  push:
     branches:
       - master
-    tags:
-      - "v*.*.*"
 jobs:
   lint-frontend:
     runs-on: ubuntu-latest
