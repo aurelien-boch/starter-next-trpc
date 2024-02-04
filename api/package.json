@@ -6,7 +6,7 @@
     "start": "ts-node src/index.ts",
     "test:nodb": "jest --logHeapUsage test/application test/domain",
     "test:db": "docker compose -f ./docker-compose.db-tests.yml up --abort-on-container-exit",
-    "build": "tsc",
+    "build": "tsc -p tsconfig.json",
     "lint": "eslint . --ext .ts"
   },
   "dependencies": {
