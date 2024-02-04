@@ -1,0 +1,31 @@
+version: "3.7"
+services:
+  db-test:
+    image: node:20.11.0
+    command: ["npx", "jest", "--logHeapUsage", "test/infrastructure"]
+    volumes:
+      - .:/app
+      - ../node_modules:/node_modules:ro
+    working_dir: /app
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=test
+    depends_on:
+      - db
+    networks:
+      - db-network
+
+  db:
+    image: postgres:13.1
+    healthcheck:
+      test: ["CMD", "pg_isready", "-q", "-d", "test", "-U", "root"]
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: test
+    networks:
+      - db-network
+
+networks:
+  db-network:

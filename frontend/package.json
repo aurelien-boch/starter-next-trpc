@@ -1,0 +1,36 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typesafe-i18n": "typesafe-i18n"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.16",
+    "@mui/lab": "^5.0.0-alpha.152",
+    "@mui/material": "^5.14.17",
+    "next": "13.5.4",
+    "react": "^18",
+    "react-dom": "^18",
+    "typesafe-i18n": "^5.26.2",
+    "@tanstack/react-query": "^4.35.3",
+    "@trpc/client": "^10.15.1",
+    "@trpc/react-query": "^10.15.1",
+    "@trpc/server": "^10.15.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint-config-next": "13.5.4"
+  },
+  "workspaces": {
+    "nohoist": ["typesafe-i18n"]
+  }
+}

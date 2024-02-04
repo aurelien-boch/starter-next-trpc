@@ -1,0 +1,25 @@
+on: [push]
+jobs:
+  lint-api:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.11.0'
+          cache: "yarn"
+          cache-dependency-path: yarn.lock
+      - name: "Run linter"
+        run: "yarn workspace api run build"
+
+  lint-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.11.0'
+          cache: "yarn"
+          cache-dependency-path: yarn.lock
+      - name: "Run linter"
+        run: "yarn workspace frontend run build"

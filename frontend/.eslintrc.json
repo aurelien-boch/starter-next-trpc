@@ -1,0 +1,28 @@
+{
+  "extends": [
+    "../.eslintrc.json",
+    "plugin:react/recommended"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": [
+    "react"
+  ],
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "react/react-in-jsx-scope": "off"
+  },
+  "overrides": [
+    {
+      "files": [
+        "./src/pages/**/*.tsx"
+      ],
+      "rules": {
+        "import/no-unused-modules": 0
+      }
+    }
+  ]
+}

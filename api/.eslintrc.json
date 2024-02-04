@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "../.eslintrc.json"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"]
+      }
+    }
+  }
+}

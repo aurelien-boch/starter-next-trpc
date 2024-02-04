@@ -1,0 +1,21 @@
+{
+  "name": "starter",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "6.11.0",
+    "@typescript-eslint/parser": "6.11.0",
+    "eslint": "8.53.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "2.27.5",
+    "typescript": "^5.2.2"
+  },
+  "workspaces": [
+    "api",
+    "frontend"
+  ],
+  "engines": {
+    "node": "20.11.0"
+  }
+}
