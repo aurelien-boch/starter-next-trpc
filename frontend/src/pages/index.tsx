@@ -13,6 +13,7 @@ const Showcase: NextPage = () => {
     const { data, isLoading } = api.demo.list.useQuery({ filters: { includeDeleted } });
     const { mutate } = useCreateDemoAndUpdateListing({ filters: { includeDeleted } });
     const { mutate: deleteDemo } = useDeleteDemoAndUpdateListing({ filters: { includeDeleted } });
+    const [title, setTitle] = useState("");
 
     return (
         <>
@@ -41,11 +42,8 @@ const Showcase: NextPage = () => {
                 label={"Include deleted"}
             />
             <form
-                onSubmit={(e) => {
-                    e.preventDefault();
-                    const name = e.target["name"].value;
-
-                    mutate({ title: name });
+                onSubmit={() => {
+                    mutate({ title });
                 }}
             >
                 <TextField
@@ -53,6 +51,8 @@ const Showcase: NextPage = () => {
                     variant="outlined"
                     id={"name"}
                     required
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
                 />
                 <Button
                     type="submit"

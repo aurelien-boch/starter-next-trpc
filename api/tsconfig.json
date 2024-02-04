@@ -18,9 +18,11 @@
     "strictNullChecks": true,
     "useUnknownInCatchVariables": true,
     "outDir": "dist",
-    "esModuleInterop": true,
+    "esModuleInterop": true
   },
   "exclude": [
-    "node_modules"
-  ]
+    "node_modules",
+    "../node_modules",
+  ],
+  "include": ["src/index.ts"]
 }

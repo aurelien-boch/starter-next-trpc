@@ -19,3 +19,5 @@ jobs:
         run: "yarn --cwd frontend install --frozen-lockfile"
       - name: "Run unit tests"
         run: "yarn workspace frontend build"
+env:
+  NEXT_PUBLIC_API_URL: "https://api.example.com"
