@@ -23,7 +23,7 @@ const Showcase: NextPage = () => {
                 <Typography
                     key={item.id}
                     onClick={() => {
-                        if (!item.deletedAt)
+                        if (!item.deleted_at)
                             deleteDemo({ demoId: item.id });
                     }}
                 >{index}. {JSON.stringify(item)}</Typography>
