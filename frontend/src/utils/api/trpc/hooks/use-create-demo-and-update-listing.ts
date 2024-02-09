@@ -1,8 +1,10 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { getQueryKey } from "@trpc/react-query";
+import type { DemoDto } from "api/src/infrastructure/persistence/demo/demo-dto";
 
 import type { RouterInputs, RouterOutput } from "@/utils/api/trpc/api";
 import { api } from "@/utils/api/trpc/api";
+
 
 type ListReturn = RouterOutput["demo"]["list"];
 type CreateDemoVariables = RouterInputs["demo"]["list"];
@@ -14,12 +16,12 @@ const useCreateDemoAndUpdateListing = (variables: CreateDemoVariables) => {
     return api.demo.create.useMutation({
         onSuccess: (data, variables) => {
             const queryContent = queryClient.getQueryData<ListReturn>(key);
-            const newEntry = {
+            const newEntry: DemoDto = {
                 id: data,
                 title: variables.title,
-                createdAt: new Date().toISOString(),
-                updatedAt: new Date().toISOString(),
-                deletedAt: null
+                created_at: new Date().toISOString(),
+                updated_at: new Date().toISOString(),
+                deleted_at: null
             };
 
             queryClient.setQueryData(key, [...queryContent ?? [], newEntry]);

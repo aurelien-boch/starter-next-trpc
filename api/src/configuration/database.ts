@@ -22,3 +22,9 @@ export const pgQuery = async <RowType extends QueryResultRow>(query: string, val
         client.release();
     }
 };
+
+// This is only used in tests (or will be used in graceful shutdown)
+// eslint-disable-next-line import/no-unused-modules
+export const disconnectPg = async () => {
+    await pg.end();
+};

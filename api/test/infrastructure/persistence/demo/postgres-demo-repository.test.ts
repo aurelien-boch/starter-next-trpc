@@ -1,7 +1,7 @@
 import "jest";
 import { faker } from "@faker-js/faker";
 import { PostgresDemoRepository } from "../../../../src/infrastructure/persistence/demo/postgres-demo-repository";
-import { pgQuery } from "../../../../src/configuration/database";
+import { disconnectPg, pgQuery } from "../../../../src/configuration/database";
 import { DemoId } from "../../../../src/domain/demo/demo-id";
 import { Demo } from "../../../../src/domain/demo/demo";
 import { DemoDto, hydrateDemo } from "../../../../src/infrastructure/persistence/demo/demo-dto";
@@ -26,6 +26,7 @@ describe("/infrastructure/persistence/demo/postgres-demo-repository", () => {
     afterAll(
         async () => {
             await pgQuery("delete from demo where true");
+            await disconnectPg();
         }
     );
     describe("findById", () => {

@@ -19,7 +19,7 @@ const useDeleteDemoAndUpdateListing = (queryVariables: CreateDemoVariables) => {
                 const entry = queryContent.find(({ id }) => id === variables.demoId) ;
 
                 if (entry) {
-                    entry.deletedAt = new Date().toISOString();
+                    entry.deleted_at = new Date().toISOString();
                     queryClient.setQueryData(
                         key,
                         queryContent.filter(({ id }) => id !== variables.demoId).concat(entry)
