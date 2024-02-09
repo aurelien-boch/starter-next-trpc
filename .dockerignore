@@ -1,0 +1,7 @@
+node_modules
+api/node_modules
+api/dist
+.github
+.git
+frontend/node_modules
+frontend/.next

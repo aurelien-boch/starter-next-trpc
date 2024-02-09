@@ -13,13 +13,13 @@ const cacheContext = (context: ApiContext) => async (): Promise<ApiContext> => c
     const context = buildContext();
     const tRPCServer = createHTTPServer({
         middleware: cors({
-            origin: env.clientUrl
+            origin: env.CLIENT_URL
         }),
         onError,
         router: appRouter,
         createContext: cacheContext(context)
     });
 
-    tRPCServer.listen(env.port);
-    context.services.application.logging.log(`tRPC server started on port ${env.port}`);
+    tRPCServer.listen(env.PORT);
+    context.services.application.logging.log(`tRPC server started on port ${env.PORT}`);
 })();

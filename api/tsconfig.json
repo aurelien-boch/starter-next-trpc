@@ -21,4 +21,7 @@
     "esModuleInterop": true
   },
   "files": ["src/index.ts"],
+  "include": [
+    "migrations/**/*.ts",
+  ],
 }

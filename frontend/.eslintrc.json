@@ -1,7 +1,8 @@
 {
   "extends": [
     "../.eslintrc.json",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:@next/next/re commended"
   ],
   "parserOptions": {
     "project": "./tsconfig.json"

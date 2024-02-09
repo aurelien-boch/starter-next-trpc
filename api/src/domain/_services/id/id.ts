@@ -37,4 +37,8 @@ export class Id<PREFIX extends string> {
     get value() {
         return this._valueWithPrefix;
     }
+
+    get valueWithoutPrefix() {
+        return this._valueWithPrefix.split("_")[1];
+    }
 }

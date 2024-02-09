@@ -16,6 +16,6 @@
     "frontend"
   ],
   "engines": {
-    "node": "20.11.0"
+    "node": ">=18.18.2"
   }
 }

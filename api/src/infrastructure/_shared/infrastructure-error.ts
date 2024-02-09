@@ -1,4 +1,5 @@
 export enum InfrastructureErrors {
+    FAILED_TO_SAVE = "FAILED_TO_SAVE",
 }
 
 type InfrastructureErrorParams = {
@@ -20,5 +21,3 @@ export class InfrastructureError extends Error {
         this.logging_information = logging_information;
     }
 }
-
-//TODO: use this in repositories
