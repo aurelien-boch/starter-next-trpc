@@ -3,7 +3,7 @@
     "../.eslintrc.json"
   ],
   "parserOptions": {
-    "project": "./tsconfig.json"
+    "project": "./tsconfig.base.json"
   },
   "settings": {
     "import/resolver": {
@@ -14,8 +14,6 @@
   },
   "ignorePatterns": [
     "dist/",
-    "node_modules/",
-    "migrations/",
-    "test/"
+    "node_modules/"
   ]
 }

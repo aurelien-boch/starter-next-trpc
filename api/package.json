@@ -6,7 +6,7 @@
     "start": "ts-node src/index.ts",
     "test:nodb": "jest --logHeapUsage test/application test/domain",
     "test:db": "docker compose -f ./docker-compose.db-tests.yml up --abort-on-container-exit",
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.build.json",
     "lint": "eslint . --ext .ts",
     "migrate:up": "set DATABASE_URL=postgres://root:root@localhost:5432/demo&& npx node-pg-migrate -m migrations up",
     "migrate:down": "set DATABASE_URL=postgres://root:root@localhost:5432/demo&& npx node-pg-migrate -m migrations down",

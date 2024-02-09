@@ -1,10 +1,12 @@
 import "jest";
 import { faker } from "@faker-js/faker";
+
 import { PostgresDemoRepository } from "../../../../src/infrastructure/persistence/demo/postgres-demo-repository";
 import { disconnectPg, pgQuery } from "../../../../src/configuration/database";
 import { DemoId } from "../../../../src/domain/demo/demo-id";
 import { Demo } from "../../../../src/domain/demo/demo";
-import { DemoDto, hydrateDemo } from "../../../../src/infrastructure/persistence/demo/demo-dto";
+import { hydrateDemo } from "../../../../src/infrastructure/persistence/demo/demo-dto";
+import type { DemoDto } from "../../../../src/infrastructure/persistence/demo/demo-dto";
 
 describe("/infrastructure/persistence/demo/postgres-demo-repository", () => {
     const repository = new PostgresDemoRepository(pgQuery);

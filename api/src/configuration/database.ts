@@ -8,9 +8,7 @@ const pg = new Pool({
     host: env.POSTGRES_HOST,
     database: env.POSTGRES_DATABASE,
     password: env.POSTGRES_PASSWORD,
-    user: env.POSTGRES_USER,
-    // eslint-disable-next-line no-console
-    log: console.log // This is a hack to get the queries logged to the console
+    user: env.POSTGRES_USER
 });
 
 export const pgQuery = async <RowType extends QueryResultRow>(query: string, values: unknown[] = []) => {
