@@ -15,5 +15,15 @@
   "ignorePatterns": [
     "dist/",
     "node_modules/"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "./migrations/**/*.ts"
+      ],
+      "rules": {
+        "import/no-unused-modules": 0
+      }
+    }
   ]
 }
