@@ -3,7 +3,7 @@
     "../.eslintrc.json"
   ],
   "parserOptions": {
-    "project": "./tsconfig.json"
+    "project": "./tsconfig.base.json"
   },
   "settings": {
     "import/resolver": {
