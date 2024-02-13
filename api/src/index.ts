@@ -7,7 +7,8 @@ import type { ApiContext } from "./api/_shared/api-context";
 import onError from "./api/trpc/_shared/on-error";
 import { appRouter } from "./api/trpc/app";
 
-const cacheContext = (context: ApiContext) => async (): Promise<ApiContext> => context;
+const cacheContext = (context: ApiContext) => async (): Promise<ApiContext> =>
+    context;
 
 (async () => {
     const context = buildContext();
@@ -21,5 +22,7 @@ const cacheContext = (context: ApiContext) => async (): Promise<ApiContext> => c
     });
 
     tRPCServer.listen(env.PORT);
-    context.services.application.logging.log(`tRPC server started on port ${env.PORT}`);
+    context.services.application.logging.log(
+        `tRPC server started on port ${env.PORT}`
+    );
 })();

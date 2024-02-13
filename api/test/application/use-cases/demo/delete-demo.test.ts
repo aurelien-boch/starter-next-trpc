@@ -7,22 +7,23 @@ import { DemoId } from "../../../../src/domain/demo/demo-id";
 import { Demo } from "../../../../src/domain/demo/demo";
 import deleteDemo from "../../../../src/application/use-cases/demo/delete-demo";
 import type { Context } from "../../../../src/application/_shared/context";
-import {
-    DeleteAlreadyDeletedObjectError
-} from "../../../../src/domain/_shared/time-trackable-object/exceptions/delete-already-deleted-object-error";
+import { DeleteAlreadyDeletedObjectError } from "../../../../src/domain/_shared/time-trackable-object/exceptions/delete-already-deleted-object-error";
 
-const mockDemo = (demoId: DemoId) => new Demo(
-    faker.person.bio(),
-    demoId,
-    faker.date.past({ years: 2 }),
-    faker.date.past({ years: 1 }),
-    null
-);
+const mockDemo = (demoId: DemoId) =>
+    new Demo(
+        faker.person.bio(),
+        demoId,
+        faker.date.past({ years: 2 }),
+        faker.date.past({ years: 1 }),
+        null
+    );
 
 describe("application/use-cases/demo/delete-demo", () => {
     const demoRepository: DemoMockRepository = new DemoMockRepository();
     let demoId: DemoId;
-    const context: Context = { repositories: { demo: demoRepository } } as unknown as Context;
+    const context: Context = {
+        repositories: { demo: demoRepository }
+    } as unknown as Context;
 
     beforeEach(() => {
         demoRepository.clear();
@@ -40,7 +41,9 @@ describe("application/use-cases/demo/delete-demo", () => {
     it("Should throw an error when trying to delete a non-existing demo", async () => {
         const nonExistingDemoId = new DemoId(faker.string.uuid());
 
-        await expect(deleteDemo(context)({ demoId: nonExistingDemoId })).rejects.toThrow();
+        await expect(
+            deleteDemo(context)({ demoId: nonExistingDemoId })
+        ).rejects.toThrow();
     });
 
     it("Should throw an error when trying to delete a deleted demo", async () => {
@@ -48,6 +51,8 @@ describe("application/use-cases/demo/delete-demo", () => {
         deletedDemo?.delete();
         await demoRepository.save(deletedDemo!);
 
-        await expect(deleteDemo(context)({ demoId })).rejects.toThrow(DeleteAlreadyDeletedObjectError);
+        await expect(deleteDemo(context)({ demoId })).rejects.toThrow(
+            DeleteAlreadyDeletedObjectError
+        );
     });
 });

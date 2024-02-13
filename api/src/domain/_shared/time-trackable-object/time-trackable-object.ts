@@ -57,10 +57,8 @@ export class TimeTrackableObject {
      * @throws DeleteAlreadyDeletedObjectError
      */
     public delete() {
-        if (this.isDeleted())
-            throw new DeleteAlreadyDeletedObjectError();
-        else
-            this._deletedAt = new Date();
+        if (this.isDeleted()) throw new DeleteAlreadyDeletedObjectError();
+        else this._deletedAt = new Date();
     }
 
     /**
@@ -71,9 +69,7 @@ export class TimeTrackableObject {
      * @throws UpdateDeletedObjectError
      */
     protected updateUpdatedAt() {
-        if (this.isDeleted())
-            throw new UpdateDeletedObjectError();
-        else
-            this._updatedAt = new Date();
+        if (this.isDeleted()) throw new UpdateDeletedObjectError();
+        else this._updatedAt = new Date();
     }
 }

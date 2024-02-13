@@ -7,10 +7,7 @@ import apiErrorConverter from "../../../_shared/api-error-converter";
 const controller = publicProcedure
     .input(
         z.object({
-            title: z
-                .string()
-                .min(3)
-                .max(100)
+            title: z.string().min(3).max(100)
         })
     )
     .mutation(async ({ ctx, input }) => {

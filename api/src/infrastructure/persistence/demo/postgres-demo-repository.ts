@@ -2,11 +2,13 @@ import type { DemoRepository } from "../../../domain/demo/demo-repository";
 import type { Demo } from "../../../domain/demo/demo";
 import type { DemoId } from "../../../domain/demo/demo-id";
 import type { pgQuery } from "../../../configuration/database";
-import { InfrastructureError, InfrastructureErrors } from "../../_shared/infrastructure-error";
+import {
+    InfrastructureError,
+    InfrastructureErrors
+} from "../../_shared/infrastructure-error";
 
 import type { DemoDto } from "./demo-dto";
 import { hydrateDemo } from "./demo-dto";
-
 
 export class PostgresDemoRepository implements DemoRepository {
     async findById(_id: DemoId): Promise<Demo | null> {
@@ -89,8 +91,5 @@ export class PostgresDemoRepository implements DemoRepository {
             });
     }
 
-    constructor(
-        private readonly pgQueryFunction: typeof pgQuery
-    ) {
-    }
+    constructor(private readonly pgQueryFunction: typeof pgQuery) {}
 }

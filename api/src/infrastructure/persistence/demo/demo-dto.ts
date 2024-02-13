@@ -18,7 +18,6 @@ export const hydrateDemo = (dto: DemoDto): Demo =>
         dto.deleted_at ? new Date(dto.deleted_at) : null
     );
 
-
 export const dehydrateDemo = (demo: Demo): DemoDto => ({
     id: demo.id().value,
     title: demo.title(),

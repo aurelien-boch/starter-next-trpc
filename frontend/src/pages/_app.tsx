@@ -20,8 +20,7 @@ const App = ({ Component, pageProps }: AppProps): ReactElement => {
         setLocaleLoaded(true);
     }, [locale]);
 
-    if (!localeLoaded)
-        return <div>Loading application in {locale}...</div>;
+    if (!localeLoaded) return <div>Loading application in {locale}...</div>;
 
     return (
         <QueryClientProvider client={queryClient}>

@@ -1,4 +1,3 @@
-const errors = {
-};
+const errors = {};
 
 export default errors;

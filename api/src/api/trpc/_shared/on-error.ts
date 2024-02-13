@@ -13,8 +13,7 @@ const onError: OnErrorFn = ({ error }) => {
             code: "INVALID_INPUT",
             additional_information: JSON.stringify(issues)
         });
-    }
-    else if (error.cause instanceof ApiError) {
+    } else if (error.cause instanceof ApiError) {
         const { code, additional_client_information } = error.cause;
 
         error.message = JSON.stringify({

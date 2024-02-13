@@ -5,7 +5,6 @@ import { DemoFactory } from "../../../src/domain/demo/demo-factory";
 import { MockIdService } from "../../_mocks/application/services/id-service";
 import { DemoId } from "../../../src/domain/demo/demo-id";
 
-
 describe("domain/demo/demo-factory", () => {
     let idService: MockIdService = new MockIdService();
     let factory: DemoFactory = new DemoFactory(idService);

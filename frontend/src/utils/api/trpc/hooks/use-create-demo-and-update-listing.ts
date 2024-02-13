@@ -5,7 +5,6 @@ import type { DemoDto } from "api/src/infrastructure/persistence/demo/demo-dto";
 import type { RouterInputs, RouterOutput } from "@/utils/api/trpc/api";
 import { api } from "@/utils/api/trpc/api";
 
-
 type ListReturn = RouterOutput["demo"]["list"];
 type CreateDemoVariables = RouterInputs["demo"]["list"];
 
@@ -24,7 +23,7 @@ const useCreateDemoAndUpdateListing = (variables: CreateDemoVariables) => {
                 deleted_at: null
             };
 
-            queryClient.setQueryData(key, [...queryContent ?? [], newEntry]);
+            queryClient.setQueryData(key, [...(queryContent ?? []), newEntry]);
         }
     });
 };

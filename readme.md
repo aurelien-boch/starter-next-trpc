@@ -8,7 +8,7 @@ It is a monorepo using yarn workspaces that set up various tools for development
 
 1. Clone the repository
 2. Run `yarn install`
-3. Run `docker-compose up db` to start the database
+3. Run `docker compose up db` to start the database
 4. Run `yarn workspace api run start` to start the tRPC development server
 5. Run `yarn workspace frontend run dev` to start the Next.js development server
 6. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -52,10 +52,12 @@ To generate types for the translations, run `yarn workspace frontend run typesaf
 This will generate types for the
 translations.
 
-## Docker-compose
+## Docker compose
 
-The api and frontend workspaces have their own Dockerfiles and can be run using docker-compose. The `docker-compose.yml` file
-at the root of the project can be used to start the entire project. It starts the database, the tRPC backend and the Next.js
+The api and frontend workspaces have their own Dockerfiles and can be run using docker compose.
+The `docker-compose.yml` file
+at the root of the project can be used to start the entire project.
+It starts the database, the tRPC backend and the Next.js
 frontend.
 
 ## Database

@@ -7,23 +7,27 @@ import { DemoId } from "../../../../src/domain/demo/demo-id";
 import { Demo } from "../../../../src/domain/demo/demo";
 import updateTitle from "../../../../src/application/use-cases/demo/update-demo-title";
 import type { Context } from "../../../../src/application/_shared/context";
-import { ApplicationError, ApplicationErrors } from "../../../../src/application/_shared/application-error";
 import {
-    UpdateDeletedObjectError
-} from "../../../../src/domain/_shared/time-trackable-object/exceptions/update-deleted-object-error";
+    ApplicationError,
+    ApplicationErrors
+} from "../../../../src/application/_shared/application-error";
+import { UpdateDeletedObjectError } from "../../../../src/domain/_shared/time-trackable-object/exceptions/update-deleted-object-error";
 
-const mockDemo = (demoId: DemoId) => new Demo(
-    faker.person.bio(),
-    demoId,
-    faker.date.past({ years: 2 }),
-    faker.date.past({ years: 1 }),
-    null
-);
+const mockDemo = (demoId: DemoId) =>
+    new Demo(
+        faker.person.bio(),
+        demoId,
+        faker.date.past({ years: 2 }),
+        faker.date.past({ years: 1 }),
+        null
+    );
 
 describe("application/use-cases/demo/update-demo-title", () => {
     const demoRepository: DemoMockRepository = new DemoMockRepository();
     let demoId: DemoId;
-    const context: Context = { repositories: { demo: demoRepository } } as unknown as Context;
+    const context: Context = {
+        repositories: { demo: demoRepository }
+    } as unknown as Context;
 
     beforeEach(() => {
         demoRepository.clear();
@@ -32,12 +36,16 @@ describe("application/use-cases/demo/update-demo-title", () => {
     });
 
     it("Should update the title of the demo", async () => {
-        const oldTitle = await demoRepository.findById(demoId).then(e => e?.title() || null);
+        const oldTitle = await demoRepository
+            .findById(demoId)
+            .then((e) => e?.title() || null);
         const newTitle = faker.person.bio();
 
         await updateTitle(context)({ newTitle, demoId });
 
-        const fetchedNewTitle = await demoRepository.findById(demoId).then(e => e?.title() || null);
+        const fetchedNewTitle = await demoRepository
+            .findById(demoId)
+            .then((e) => e?.title() || null);
         expect(fetchedNewTitle).toBe(newTitle);
         expect(fetchedNewTitle).not.toBe(oldTitle);
     });
@@ -46,7 +54,9 @@ describe("application/use-cases/demo/update-demo-title", () => {
         const nonExistingDemoId = new DemoId(faker.string.uuid());
         const newTitle = faker.person.bio();
 
-        await expect(updateTitle(context)({ newTitle, demoId: nonExistingDemoId })).rejects.toThrow(
+        await expect(
+            updateTitle(context)({ newTitle, demoId: nonExistingDemoId })
+        ).rejects.toThrow(
             new ApplicationError({
                 code: ApplicationErrors.DEMO_NOT_FOUND,
                 additional_client_information: "Demo not found",
@@ -61,6 +71,8 @@ describe("application/use-cases/demo/update-demo-title", () => {
         await demoRepository.save(deletedDemo!);
         const newTitle = faker.person.bio();
 
-        await expect(updateTitle(context)({ newTitle, demoId })).rejects.toThrow(UpdateDeletedObjectError);
+        await expect(
+            updateTitle(context)({ newTitle, demoId })
+        ).rejects.toThrow(UpdateDeletedObjectError);
     });
 });

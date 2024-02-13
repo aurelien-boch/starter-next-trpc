@@ -5,13 +5,10 @@ import { DemoId } from "./demo-id";
 
 type DemoCreateParams = {
     title: string;
-}
+};
 
 export class DemoFactory {
-    constructor(
-        private readonly _idService: IdService
-    ) {
-    }
+    constructor(private readonly _idService: IdService) {}
 
     public create(params: DemoCreateParams) {
         return new Demo(

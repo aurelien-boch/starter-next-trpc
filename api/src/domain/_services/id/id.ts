@@ -4,8 +4,10 @@
  * @param type The prefix to check.
  * @returns True if the given value is prefixed with the given type.
  */
-const isPrefixedValue = <PREFIX extends string>(value: string, type: PREFIX): value is `${PREFIX}_${string}` =>
-    value.startsWith(type);
+const isPrefixedValue = <PREFIX extends string>(
+    value: string,
+    type: PREFIX
+): value is `${PREFIX}_${string}` => value.startsWith(type);
 
 export class Id<PREFIX extends string> {
     private readonly _valueWithPrefix: `${PREFIX}_${string}`;
@@ -19,7 +21,9 @@ export class Id<PREFIX extends string> {
         value: string | `${PREFIX}_${string}`,
         public readonly type: PREFIX
     ) {
-        this._valueWithPrefix = isPrefixedValue(value, type) ? value : `${type}_${value}`;
+        this._valueWithPrefix = isPrefixedValue(value, type)
+            ? value
+            : `${type}_${value}`;
     }
 
     /**

@@ -34,10 +34,6 @@
     "prefer-const": "error",
     "no-tabs": "error",
     "no-trailing-spaces": "error",
-    "indent": ["error", 4],
-    "quotes": ["error", "double"],
-    "semi": ["error", "always"],
-    "comma-dangle": ["error", "never"],
     "object-curly-spacing": ["error", "always"],
     "array-bracket-spacing": ["error", "never"],
     "space-before-function-paren": ["error", {

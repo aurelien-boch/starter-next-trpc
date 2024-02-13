@@ -1,9 +1,12 @@
 {
-  "rootDir": "test",
+    "rootDir": "test",
     "testMatch": ["**/*.test.ts"],
     "transform": {
-      "^.+\\.ts$": ["ts-jest", {
-        "tsconfig": "tsconfig.base.json"
-      }]
+        "^.+\\.ts$": [
+            "ts-jest",
+            {
+                "tsconfig": "tsconfig.base.json"
+            }
+        ]
     }
 }

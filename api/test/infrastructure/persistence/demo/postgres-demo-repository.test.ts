@@ -25,15 +25,15 @@ describe("/infrastructure/persistence/demo/postgres-demo-repository", () => {
         await repository.save(demo);
     });
 
-    afterAll(
-        async () => {
-            await pgQuery("delete from demo where true");
-            await disconnectPg();
-        }
-    );
+    afterAll(async () => {
+        await pgQuery("delete from demo where true");
+        await disconnectPg();
+    });
     describe("findById", () => {
         it("Should return null if not found", async () => {
-            const demo = await repository.findById(new DemoId(faker.string.uuid()));
+            const demo = await repository.findById(
+                new DemoId(faker.string.uuid())
+            );
 
             expect(demo).toBeNull();
         });
@@ -86,7 +86,7 @@ describe("/infrastructure/persistence/demo/postgres-demo-repository", () => {
                 [demo.id().valueWithoutPrefix]
             )
                 .then((res) => res.rows[0])
-                .then((res) => res ? hydrateDemo(res) : null);
+                .then((res) => (res ? hydrateDemo(res) : null));
 
             expect(fetchedDemo).toEqual(demo);
         });
@@ -101,7 +101,7 @@ describe("/infrastructure/persistence/demo/postgres-demo-repository", () => {
                 [demo.id().valueWithoutPrefix]
             )
                 .then((res) => res.rows[0])
-                .then((res) => res ? hydrateDemo(res) : null);
+                .then((res) => (res ? hydrateDemo(res) : null));
 
             expect(fetchedDemo?.title()).toEqual(newTitle);
         });

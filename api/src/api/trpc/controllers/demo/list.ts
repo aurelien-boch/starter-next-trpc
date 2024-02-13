@@ -16,8 +16,7 @@ const controller = publicProcedure
 
         if (input.filters.includeDeleted === true)
             return res.map(dehydrateDemo);
-        else
-            return res.filter(e => !e.isDeleted()).map(dehydrateDemo);
+        else return res.filter((e) => !e.isDeleted()).map(dehydrateDemo);
     });
 
 export default controller;

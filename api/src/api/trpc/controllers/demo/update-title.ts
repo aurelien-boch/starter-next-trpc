@@ -13,7 +13,9 @@ const controller = publicProcedure
             demoId: parseCustomId(DemoId)()
         })
     )
-    .mutation(async ({ ctx, input }) =>
-        await apiErrorConverter(ctx)(updateDemoTitle)(input));
+    .mutation(
+        async ({ ctx, input }) =>
+            await apiErrorConverter(ctx)(updateDemoTitle)(input)
+    );
 
 export default controller;

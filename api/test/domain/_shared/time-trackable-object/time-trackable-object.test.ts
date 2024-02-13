@@ -2,12 +2,8 @@ import "jest";
 import { faker } from "@faker-js/faker";
 
 import { TimeTrackableObject } from "../../../../src/domain/_shared/time-trackable-object/time-trackable-object";
-import {
-    UpdateDeletedObjectError
-} from "../../../../src/domain/_shared/time-trackable-object/exceptions/update-deleted-object-error";
-import {
-    DeleteAlreadyDeletedObjectError
-} from "../../../../src/domain/_shared/time-trackable-object/exceptions/delete-already-deleted-object-error";
+import { UpdateDeletedObjectError } from "../../../../src/domain/_shared/time-trackable-object/exceptions/update-deleted-object-error";
+import { DeleteAlreadyDeletedObjectError } from "../../../../src/domain/_shared/time-trackable-object/exceptions/delete-already-deleted-object-error";
 
 class PublicTimeTrackableObject extends TimeTrackableObject {
     public override updateUpdatedAt(): void {
@@ -37,7 +33,9 @@ describe("domain/_shared/time-trackable-object", () => {
     it("It should throw an error when calling updateUpdatedAt on a deleted object", () => {
         timeTrackableObject.delete();
 
-        expect(() => timeTrackableObject.updateUpdatedAt()).toThrow(UpdateDeletedObjectError);
+        expect(() => timeTrackableObject.updateUpdatedAt()).toThrow(
+            UpdateDeletedObjectError
+        );
     });
 
     it("Should delete the object when calling delete", () => {
@@ -49,6 +47,8 @@ describe("domain/_shared/time-trackable-object", () => {
     it("It should throw an error when deleting an already deleted object", () => {
         timeTrackableObject.delete();
 
-        expect(() => timeTrackableObject.delete()).toThrow(DeleteAlreadyDeletedObjectError);
+        expect(() => timeTrackableObject.delete()).toThrow(
+            DeleteAlreadyDeletedObjectError
+        );
     });
 });

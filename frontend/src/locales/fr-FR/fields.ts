@@ -1,4 +1,3 @@
-const name = {
-};
+const name = {};
 
 export default name;

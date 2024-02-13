@@ -13,16 +13,21 @@ const useDeleteDemoAndUpdateListing = (queryVariables: CreateDemoVariables) => {
 
     return api.demo.delete.useMutation({
         onSuccess: (_, variables) => {
-            const queryContent = queryClient.getQueryData<ListReturn>(key) ?? [];
+            const queryContent =
+                queryClient.getQueryData<ListReturn>(key) ?? [];
 
             if (queryVariables.filters.includeDeleted === true) {
-                const entry = queryContent.find(({ id }) => id === variables.demoId) ;
+                const entry = queryContent.find(
+                    ({ id }) => id === variables.demoId
+                );
 
                 if (entry) {
                     entry.deleted_at = new Date().toISOString();
                     queryClient.setQueryData(
                         key,
-                        queryContent.filter(({ id }) => id !== variables.demoId).concat(entry)
+                        queryContent
+                            .filter(({ id }) => id !== variables.demoId)
+                            .concat(entry)
                     );
                 }
             } else
@@ -30,7 +35,6 @@ const useDeleteDemoAndUpdateListing = (queryVariables: CreateDemoVariables) => {
                     key,
                     queryContent.filter(({ id }) => id !== variables.demoId)
                 );
-
         }
     });
 };

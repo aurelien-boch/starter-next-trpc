@@ -11,7 +11,10 @@ const pg = new Pool({
     user: env.POSTGRES_USER
 });
 
-export const pgQuery = async <RowType extends QueryResultRow>(query: string, values: unknown[] = []) => {
+export const pgQuery = async <RowType extends QueryResultRow>(
+    query: string,
+    values: unknown[] = []
+) => {
     const client = await pg.connect();
 
     try {

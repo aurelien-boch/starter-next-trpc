@@ -7,5 +7,7 @@ export class IdConstraint extends Id<string> {
 }
 
 export interface IdService {
-    generate<Type extends typeof IdConstraint>(BaseClass: Type): InstanceType<Type>;
+    generate<Type extends typeof IdConstraint>(
+        BaseClass: Type
+    ): InstanceType<Type>;
 }

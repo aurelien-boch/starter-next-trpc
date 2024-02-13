@@ -4,21 +4,21 @@ import type { IdService } from "../../domain/_services/id/id-service";
 import type { LoggingService } from "../services/logging/logging-service";
 
 type Factories = {
-    demo: DemoFactory
-}
+    demo: DemoFactory;
+};
 
 type Services = {
     domain: {
         id: IdService;
-    }
+    };
     application: {
-        logging: LoggingService
-    }
-}
+        logging: LoggingService;
+    };
+};
 
 type Repositories = {
-    demo: DemoRepository
-}
+    demo: DemoRepository;
+};
 
 export type Context = {
     factories: Factories;

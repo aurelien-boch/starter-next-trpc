@@ -3,9 +3,7 @@ import { faker } from "@faker-js/faker";
 
 import { Demo } from "../../../src/domain/demo/demo";
 import { DemoId } from "../../../src/domain/demo/demo-id";
-import {
-    UpdateDeletedObjectError
-} from "../../../src/domain/_shared/time-trackable-object/exceptions/update-deleted-object-error";
+import { UpdateDeletedObjectError } from "../../../src/domain/_shared/time-trackable-object/exceptions/update-deleted-object-error";
 
 describe("domain/demo/demo", () => {
     let demo: Demo;
@@ -37,6 +35,8 @@ describe("domain/demo/demo", () => {
     it("Should throw when updating a deleted object", () => {
         demo.delete();
 
-        expect(() => demo.setTitle(faker.person.bio())).toThrow(UpdateDeletedObjectError);
+        expect(() => demo.setTitle(faker.person.bio())).toThrow(
+            UpdateDeletedObjectError
+        );
     });
 });

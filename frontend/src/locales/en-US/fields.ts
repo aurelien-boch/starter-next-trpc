@@ -1,4 +1,3 @@
-const fields = {
-};
+const fields = {};
 
 export default fields;

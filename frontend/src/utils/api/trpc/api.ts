@@ -18,8 +18,7 @@ export const queryClient = new QueryClient({
 
 const api_url = process.env["NEXT_PUBLIC_API_URL"];
 
-if (!api_url)
-    throw new Error("NEXT_PUBLIC_API_URL is not defined");
+if (!api_url) throw new Error("NEXT_PUBLIC_API_URL is not defined");
 
 export const trpcClient = api.createClient({
     links: [

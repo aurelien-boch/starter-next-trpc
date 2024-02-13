@@ -3,7 +3,10 @@ import heartbeatController from "./controllers/heartbeat";
 
 import { router } from "./index";
 
-export const appRouter = router({ demo: demoRouter, heartbeat: heartbeatController });
+export const appRouter = router({
+    demo: demoRouter,
+    heartbeat: heartbeatController
+});
 
 // Exporting router for frontend
 // eslint-disable-next-line import/no-unused-modules
