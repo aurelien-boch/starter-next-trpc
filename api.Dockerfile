@@ -1,4 +1,5 @@
-FROM node:20.0-alpine3.17 as builder
+FROM node:20.0-alpine3.17 AS base
+FROM base AS builder
 
 WORKDIR /app
 
@@ -9,7 +10,7 @@ COPY api/src api/src/
 RUN yarn install --frozen-lockfile --non-interactive \
     && yarn workspace api run build
 
-FROM node:20.0-alpine3.17
+FROM base AS runner
 
 WORKDIR /app
 

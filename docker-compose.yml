@@ -17,7 +17,7 @@ services:
       POSTGRES_PASSWORD: root
       POSTGRES_DATABASE: demo
     ports:
-      - "3000:3000"
+      - "3001:3001"
   db:
     build:
       context: .
@@ -36,9 +36,8 @@ services:
     build:
       context: .
       dockerfile: frontend.Dockerfile
-    environment:
-      PORT: 3000
-      API_URL: http://localhost:3001
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:3001
     ports:
       - "3000:3000"
     depends_on:
