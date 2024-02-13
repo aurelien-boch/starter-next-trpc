@@ -2,6 +2,8 @@ on:
   pull_request:
     paths:
       - "frontend/**"
+      - "package.json"
+      - "yarn.lock"
   push:
     branches:
       - master
