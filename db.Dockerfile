@@ -1,6 +1,6 @@
 FROM postgres:16-alpine
 
-COPY api/package.json api/tsconfig.base.json api/
+COPY api/package.json api/tsconfig.json api/
 COPY api/migrations api/migrations
 COPY yarn.lock package.json ./
 
