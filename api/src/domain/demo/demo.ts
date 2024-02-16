@@ -1,16 +1,16 @@
-import { Aggregate } from "../_shared/aggregate";
+import { TimeTrackableObject } from "../_shared/time-trackable-object/time-trackable-object";
 
 import type { DemoId } from "./demo-id";
 
-export class Demo extends Aggregate<DemoId> {
+export class Demo extends TimeTrackableObject {
     constructor(
         private _title: string,
-        id: DemoId,
+        private readonly _id: DemoId,
         createdAt: Date,
         updatedAt: Date,
         deletedAt: Date | null
     ) {
-        super(id, createdAt, updatedAt, deletedAt);
+        super(createdAt, updatedAt, deletedAt);
     }
 
     public title() {
@@ -20,5 +20,9 @@ export class Demo extends Aggregate<DemoId> {
     public setTitle(title: string) {
         this._title = title;
         this.updateUpdatedAt();
+    }
+
+    public id() {
+        return this._id;
     }
 }
