@@ -4,7 +4,7 @@ FROM base AS builder
 WORKDIR /app
 
 COPY package.json yarn.lock ./
-COPY api/package.json api/tsconfig.json api/tsconfig.json api/
+COPY api/package.json api/tsconfig.json api/tsconfig.build.json api/
 COPY api/src api/src/
 
 RUN yarn install --frozen-lockfile --non-interactive \
