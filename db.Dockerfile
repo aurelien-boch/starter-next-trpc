@@ -10,7 +10,7 @@ RUN apk add --no-cache --virtual .build-deps \
     && yarn workspace api install --frozen-lockfile --non-interactive \
     && mkdir -p api/src/ \
     && touch api/src/index.ts \
-    && yarn workspace api run tsc -p tsconfig.base.json \
+    && yarn workspace api run tsc -p tsconfig.json \
     && rm -rf node_modules api/node_modules \
     && yarn install --frozen-lockfile --non-interactive --production \
     && yarn cache clean \
