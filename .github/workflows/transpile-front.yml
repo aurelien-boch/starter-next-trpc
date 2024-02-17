@@ -2,6 +2,7 @@ on:
   pull_request:
     paths:
       - "frontend/**"
+      - "api/src/api/**"
       - "package.json"
       - "yarn.lock"
   push:
